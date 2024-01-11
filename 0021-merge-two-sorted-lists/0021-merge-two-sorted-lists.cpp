@@ -31,7 +31,8 @@ public:
             v.push_back(list2->val);
             list2 =list2->next;
         }
-        
+        delete(list1);
+        delete(list2);
         ListNode* head=NULL;
         sort(v.begin(),v.end());
         reverse(v.begin(),v.end());
