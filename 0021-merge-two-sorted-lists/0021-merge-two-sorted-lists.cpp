@@ -10,37 +10,37 @@
  */
 class Solution {
 public:
-    void push(ListNode** headr,int new_data)
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2)
     {
-        ListNode* new_node = new ListNode(new_data);
-        new_node->next = (*headr);
-        (*headr) = new_node;
-    }
-    
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode* dummy = new ListNode();
+        ListNode* curr = dummy;
         
-        vector<int>v;
-        
-        while(list1 != NULL)
+        while(list1 != nullptr && list2 != nullptr)
         {
-            v.push_back(list1->val);
-            list1 =list1->next;
-        }
-        while(list2 != NULL)
-        {
-            v.push_back(list2->val);
-            list2 =list2->next;
-        }
-        delete(list1);
-        delete(list2);
-        ListNode* head=NULL;
-        sort(v.begin(),v.end());
-        reverse(v.begin(),v.end());
-        for(int i =0 ;i<v.size();i++)
-        {
-            push(&head,v[i]);
+            if(list1->val < list2->val)
+            {
+                curr->next = list1;
+                list1 =list1 ->next;
+            }
+            else
+            {
+                  curr->next = list2;
+                list2 =list2 ->next;
+            }
+            
+            curr = curr ->next;
         }
         
-        return head;
+        if(list1 != nullptr)
+        {
+            curr->next =list1;
+        }
+        else
+        {
+            curr->next = list2;
+        }
+        
+        
+        return dummy ->next;
     }
 };
