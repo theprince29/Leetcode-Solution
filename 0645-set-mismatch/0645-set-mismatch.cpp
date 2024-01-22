@@ -5,7 +5,7 @@ public:
         vector<int>v;
         sort(nums.begin(),nums.end());
         int n = nums.size();
-        int mask; int res = nums[0];
+        int res = nums[0];
         for(int i=1;i<nums.size();i++)
         {
             if(nums[i-1] ==nums[i])
