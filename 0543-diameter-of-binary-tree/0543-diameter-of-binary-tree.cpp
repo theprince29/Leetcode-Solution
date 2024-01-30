@@ -10,23 +10,22 @@
  * };
  */
 class Solution {
-public:
-    int findh(TreeNode* root)
-    {
-        if(root == NULL) return 0;
-        return 1+max(findh(root->left),findh(root->right));
-    }
-                     
+    public:                
     int diameterOfBinaryTree(TreeNode* root) {
         if(root == NULL) return 0;
-        
-        int lefth = findh(root->left);
-        int righth = findh(root->right);
-        
-        int diroot = lefth+righth;
-        int dileft = diameterOfBinaryTree(root->left);
-        int diright = diameterOfBinaryTree(root->right);
-        
-        return max({diroot,diright,dileft});
+        int maxi = 0;
+        findh(root,maxi);
+        return maxi; 
     }
+    private:
+    int findh(TreeNode* root,int &maxi)
+    {
+        if(root == NULL) return 0;
+        
+        int lh = findh(root->left,maxi);
+        int rh = findh(root->right,maxi);
+        maxi  = max(maxi,lh+rh);
+        return 1+max(rh,lh);
+    }
+    
 };
