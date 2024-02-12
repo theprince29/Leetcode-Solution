@@ -1,54 +1,26 @@
-# Problem of the Day 
-### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/1463-cherry-pickup-ii/1463-cherry-pickup-ii.cpp)
+# Problem of the Day  12/02/2024
+### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/0169-majority-element/0169-majority-element.cpp)
 
-<h2><a href="https://leetcode.com/problems/cherry-pickup-ii/">1463. Cherry Pickup II</a></h2><h3>Hard</h3><hr><div><p>You are given a <code>rows x cols</code> matrix <code>grid</code> representing a field of cherries where <code>grid[i][j]</code> represents the number of cherries that you can collect from the <code>(i, j)</code> cell.</p>
+<h2><a href="https://leetcode.com/problems/majority-element/">169. Majority Element</a></h2><h3>Easy</h3><hr><div><p>Given an array <code>nums</code> of size <code>n</code>, return <em>the majority element</em>.</p>
 
-<p>You have two robots that can collect cherries for you:</p>
-
-<ul>
-	<li><strong>Robot #1</strong> is located at the <strong>top-left corner</strong> <code>(0, 0)</code>, and</li>
-	<li><strong>Robot #2</strong> is located at the <strong>top-right corner</strong> <code>(0, cols - 1)</code>.</li>
-</ul>
-
-<p>Return <em>the maximum number of cherries collection using both robots by following the rules below</em>:</p>
-
-<ul>
-	<li>From a cell <code>(i, j)</code>, robots can move to cell <code>(i + 1, j - 1)</code>, <code>(i + 1, j)</code>, or <code>(i + 1, j + 1)</code>.</li>
-	<li>When any robot passes through a cell, It picks up all cherries, and the cell becomes an empty cell.</li>
-	<li>When both robots stay in the same cell, only one takes the cherries.</li>
-	<li>Both robots cannot move outside of the grid at any moment.</li>
-	<li>Both robots should reach the bottom row in <code>grid</code>.</li>
-</ul>
+<p>The majority element is the element that appears more than <code>⌊n / 2⌋</code> times. You may assume that the majority element always exists in the array.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/04/29/sample_1_1802.png" style="width: 374px; height: 501px;">
-<pre><strong>Input:</strong> grid = [[3,1,1],[2,5,1],[1,5,5],[2,1,1]]
-<strong>Output:</strong> 24
-<strong>Explanation:</strong> Path of robot #1 and #2 are described in color green and blue respectively.
-Cherries taken by Robot #1, (3 + 2 + 5 + 2) = 12.
-Cherries taken by Robot #2, (1 + 5 + 5 + 1) = 12.
-Total of cherries: 12 + 12 = 24.
+<pre><strong>Input:</strong> nums = [3,2,3]
+<strong>Output:</strong> 3
+</pre><p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [2,2,1,1,1,2,2]
+<strong>Output:</strong> 2
 </pre>
-
-<p><strong class="example">Example 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/04/23/sample_2_1802.png" style="width: 500px; height: 452px;">
-<pre><strong>Input:</strong> grid = [[1,0,0,0,0,0,1],[2,0,0,0,0,3,0],[2,0,9,0,0,0,0],[0,3,0,5,4,0,0],[1,0,2,3,0,0,6]]
-<strong>Output:</strong> 28
-<strong>Explanation:</strong> Path of robot #1 and #2 are described in color green and blue respectively.
-Cherries taken by Robot #1, (1 + 9 + 5 + 2) = 17.
-Cherries taken by Robot #2, (1 + 3 + 4 + 3) = 11.
-Total of cherries: 17 + 11 = 28.
-</pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>rows == grid.length</code></li>
-	<li><code>cols == grid[i].length</code></li>
-	<li><code>2 &lt;= rows, cols &lt;= 70</code></li>
-	<li><code>0 &lt;= grid[i][j] &lt;= 100</code></li>
+	<li><code>n == nums.length</code></li>
+	<li><code>1 &lt;= n &lt;= 5 * 10<sup>4</sup></code></li>
+	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
-</div>
 
+<p>&nbsp;</p>
+<strong>Follow-up:</strong> Could you solve the problem in linear time and in <code>O(1)</code> space?</div>
