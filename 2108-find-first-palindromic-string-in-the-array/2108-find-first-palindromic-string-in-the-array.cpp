@@ -15,10 +15,20 @@ public:
         return ans;
     }
 private:
-    bool ispali(string s)
-    {
-        string x = s;
-            reverse(x.begin(),x.end());
-        return x == s;
+    bool ispali(string& s) {
+        int start = 0;
+        int end = s.size() - 1;
+        
+        while (start <= end) {
+            // Return false if the characters are not the same.
+            if (s[start] != s[end]) {
+                return false;
+            }
+            
+            start++;
+            end--;
+        }
+        
+        return true;
     }
 };
