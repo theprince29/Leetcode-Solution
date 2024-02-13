@@ -16,24 +16,9 @@ public:
     }
 private:
     bool ispali(string s)
-    { 
-        string filteredString;
-        for(char c : s) {
-        if(isalnum(c)) {
-            filteredString += tolower(c);
-        }
+    {
+        string x = s;
+            reverse(x.begin(),x.end());
+        return x == s;
     }
-    
-    
-    int left = 0;
-    int right = filteredString.size() - 1;
-    while(left < right) {
-        if(filteredString[left] != filteredString[right]) {
-            return false;
-        }
-        ++left;
-        --right;
-    }
-    return true;
-}
 };
