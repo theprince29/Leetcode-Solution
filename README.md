@@ -1,76 +1,47 @@
-# Problem of the Day  13/02/2024
-### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/2108-find-first-palindromic-string-in-the-array/2108-find-first-palindromic-string-in-the-array.cpp)
+# Problem of the Day  19/02/2024
+### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/0231-power-of-two/0231-power-of-two.cpp)
 
-<h2><a href="https://leetcode.com/problems/find-first-palindromic-string-in-the-array/">2108. Find First Palindromic String in the Array</a></h2><h3>Easy</h3><hr><div><p>Given an array of strings <code>words</code>, return <em>the first <strong>palindromic</strong> string in the array</em>. If there is no such string, return <em>an <strong>empty string</strong> </em><code>""</code>.</p>
+<h2><a href="https://leetcode.com/problems/power-of-two/">231. Power of Two</a></h2><h3>Easy</h3><hr><div><p>Given an integer <code>n</code>, return <em><code>true</code> if it is a power of two. Otherwise, return <code>false</code></em>.</p>
 
-<p>A string is <strong>palindromic</strong> if it reads the same forward and backward.</p>
+<p>An integer <code>n</code> is a power of two, if there exists an integer <code>x</code> such that <code>n == 2<sup>x</sup></code>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> words = ["abc","car","ada","racecar","cool"]
-<strong>Output:</strong> "ada"
-<strong>Explanation:</strong> The first string that is palindromic is "ada".
-Note that "racecar" is also palindromic, but it is not the first.
+<pre><strong>Input:</strong> n = 1
+<strong>Output:</strong> true
+<strong>Explanation: </strong>2<sup>0</sup> = 1
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> words = ["notapalindrome","racecar"]
-<strong>Output:</strong> "racecar"
-<strong>Explanation:</strong> The first and only string that is palindromic is "racecar".
+<pre><strong>Input:</strong> n = 16
+<strong>Output:</strong> true
+<strong>Explanation: </strong>2<sup>4</sup> = 16
 </pre>
 
 <p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> words = ["def","ghi"]
-<strong>Output:</strong> ""
-<strong>Explanation:</strong> There are no palindromic strings, so the empty string is returned.
+<pre><strong>Input:</strong> n = 3
+<strong>Output:</strong> false
 </pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= words.length &lt;= 100</code></li>
-	<li><code>1 &lt;= words[i].length &lt;= 100</code></li>
-	<li><code>words[i]</code> consists only of lowercase English letters.</li>
+	<li><code>-2<sup>31</sup> &lt;= n &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
-</div>
+
+<p>&nbsp;</p>
+<strong>Follow up:</strong> Could you solve it without loops/recursion?</div>
 
 ```
 class Solution {
 public:
-
-    
-    string firstPalindrome(vector<string>& words) {
-        
-        string ans;
-        for(auto x: words)
-            if(ispali(x))
-            {
-                ans = x;
-                break;
-            }
-                
-        return ans;
-    }
-private:
-    bool ispali(string& s) {
-        int start = 0;
-        int end = s.size() - 1;
-        
-        while (start <= end) {
-            // Return false if the characters are not the same.
-            if (s[start] != s[end]) {
-                return false;
-            }
-            
-            start++;
-            end--;
-        }
-        
-        return true;
+    bool isPowerOfTwo(int n) {
+        int s =  __builtin_popcount(n);
+        return n>0 && s==1;    
     }
 };
 ```
