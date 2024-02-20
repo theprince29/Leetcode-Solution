@@ -1,47 +1,56 @@
-# Problem of the Day  19/02/2024
+# Problem of the Day  20/02/2024
 ### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/0231-power-of-two/0231-power-of-two.cpp)
 
-<h2><a href="https://leetcode.com/problems/power-of-two/">231. Power of Two</a></h2><h3>Easy</h3><hr><div><p>Given an integer <code>n</code>, return <em><code>true</code> if it is a power of two. Otherwise, return <code>false</code></em>.</p>
-
-<p>An integer <code>n</code> is a power of two, if there exists an integer <code>x</code> such that <code>n == 2<sup>x</sup></code>.</p>
+<h2><a href="https://leetcode.com/problems/missing-number/">268. Missing Number</a></h2><h3>Easy</h3><hr><div><p>Given an array <code>nums</code> containing <code>n</code> distinct numbers in the range <code>[0, n]</code>, return <em>the only number in the range that is missing from the array.</em></p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> n = 1
-<strong>Output:</strong> true
-<strong>Explanation: </strong>2<sup>0</sup> = 1
+<pre><strong>Input:</strong> nums = [3,0,1]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> n = 16
-<strong>Output:</strong> true
-<strong>Explanation: </strong>2<sup>4</sup> = 16
+<pre><strong>Input:</strong> nums = [0,1]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> n = 2 since there are 2 numbers, so all numbers are in the range [0,2]. 2 is the missing number in the range since it does not appear in nums.
 </pre>
 
 <p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> n = 3
-<strong>Output:</strong> false
+<pre><strong>Input:</strong> nums = [9,6,4,2,3,5,7,0,1]
+<strong>Output:</strong> 8
+<strong>Explanation:</strong> n = 9 since there are 9 numbers, so all numbers are in the range [0,9]. 8 is the missing number in the range since it does not appear in nums.
 </pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>-2<sup>31</sup> &lt;= n &lt;= 2<sup>31</sup> - 1</code></li>
+	<li><code>n == nums.length</code></li>
+	<li><code>1 &lt;= n &lt;= 10<sup>4</sup></code></li>
+	<li><code>0 &lt;= nums[i] &lt;= n</code></li>
+	<li>All the numbers of <code>nums</code> are <strong>unique</strong>.</li>
 </ul>
 
 <p>&nbsp;</p>
-<strong>Follow up:</strong> Could you solve it without loops/recursion?</div>
+<p><strong>Follow up:</strong> Could you implement a solution using only <code>O(1)</code> extra space complexity and <code>O(n)</code> runtime complexity?</p>
+</div>
 
 ```
 class Solution {
 public:
-    bool isPowerOfTwo(int n) {
-        int s =  __builtin_popcount(n);
-        return n>0 && s==1;    
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int sum = n*(n+1)/2;
+        int suma=0;
+            for(int i=0;i<nums.size();i++)
+            {
+                suma+=nums[i];
+            }
+        return sum -suma;
     }
 };
 ```
