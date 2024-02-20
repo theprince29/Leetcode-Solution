@@ -1,5 +1,5 @@
 # Problem of the Day  20/02/2024
-### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/0231-power-of-two/0231-power-of-two.cpp)
+### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/0268-missing-number/0268-missing-number.cpp)
 
 <h2><a href="https://leetcode.com/problems/missing-number/">268. Missing Number</a></h2><h3>Easy</h3><hr><div><p>Given an array <code>nums</code> containing <code>n</code> distinct numbers in the range <code>[0, n]</code>, return <em>the only number in the range that is missing from the array.</em></p>
 
