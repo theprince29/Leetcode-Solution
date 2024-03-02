@@ -1,51 +1,47 @@
-# Problem of the Day  21/02/2024
-### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/0201-bitwise-and-of-numbers-range/0201-bitwise-and-of-numbers-range.cpp)
+# Problem of the Day  2/03/2024
+### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/0977-squares-of-a-sorted-array/0977-squares-of-a-sorted-array.cpp)
 
-<h2><a href="https://leetcode.com/problems/bitwise-and-of-numbers-range/">201. Bitwise AND of Numbers Range</a></h2><h3>Medium</h3><hr><div><p>Given two integers <code>left</code> and <code>right</code> that represent the range <code>[left, right]</code>, return <em>the bitwise AND of all numbers in this range, inclusive</em>.</p>
+<h2><a href="https://leetcode.com/problems/squares-of-a-sorted-array/">977. Squares of a Sorted Array</a></h2><h3>Easy</h3><hr><div><p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing</strong> order, return <em>an array of <strong>the squares of each number</strong> sorted in non-decreasing order</em>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> left = 5, right = 7
-<strong>Output:</strong> 4
+<pre><strong>Input:</strong> nums = [-4,-1,0,3,10]
+<strong>Output:</strong> [0,1,9,16,100]
+<strong>Explanation:</strong> After squaring, the array becomes [16,1,0,9,100].
+After sorting, it becomes [0,1,9,16,100].
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> left = 0, right = 0
-<strong>Output:</strong> 0
-</pre>
-
-<p><strong class="example">Example 3:</strong></p>
-
-<pre><strong>Input:</strong> left = 1, right = 2147483647
-<strong>Output:</strong> 0
+<pre><strong>Input:</strong> nums = [-7,-3,2,3,11]
+<strong>Output:</strong> [4,9,9,49,121]
 </pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>0 &lt;= left &lt;= right &lt;= 2<sup>31</sup> - 1</code></li>
+	<li><code><span>1 &lt;= nums.length &lt;= </span>10<sup>4</sup></code></li>
+	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
+	<li><code>nums</code> is sorted in <strong>non-decreasing</strong> order.</li>
 </ul>
-</div>
+
+<p>&nbsp;</p>
+<strong>Follow up:</strong> Squaring each element and sorting the new array is very trivial, could you find an <code>O(n)</code> solution using a different approach?</div>
 
 
 ```
 class Solution {
 public:
-    
-    int rangeBitwiseAnd(int left, int right) {
-        int shift =0;
-        
-        while(left<right)
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int>ans;
+        for(int i=0;i<nums.size();i++)
         {
-            left >>= 1;
-            right >>=1;
-            shift++;
+            ans.push_back(nums[i]*nums[i]);
         }
-        
-        return left <<shift;
+        sort(ans.begin(),ans.end()) ;   
+        return ans;    
     }
 };
 ```
