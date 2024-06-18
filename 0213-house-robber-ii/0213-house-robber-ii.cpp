@@ -1,42 +1,31 @@
 class Solution {
 public:
-    int rob1(vector<int>& nums) {
-         int n = nums.size();
-        if (n == 0) return 0;
+    int count(int start,int end,vector<int> &nums){
+    
+        int n=nums.size();
+        int prev2=0;
+	    int prev1=nums[start];
+	    for(int i=start+1;i<end;i++){
+	        
+	        int left=nums[i]+prev2;
+	        int right=0+prev1;
+	        
+	        int curr=max(left,right);
+
+            prev2=prev1;
+            prev1=curr;
+        }
+	    
+	    return prev1;
+    }
+        
+    int rob(vector<int>& nums) {
+        int n=nums.size();
+
         if (n == 1) return nums[0];
 
-        int prev1 = nums[0];
-        int prev2 = std::max(nums[0], nums[1]);
-
-        for (int i = 2; i < n; ++i) {
-            int current = std::max(prev2, nums[i] + prev1);
-            prev1 = prev2;
-            prev2 = current;
-        }
-
-        return prev2;
+        int ans1=count(0,n-1,nums);
+        int ans2=count(1,n,nums);
+        return max(ans1,ans2);
     }
-    int rob(vector<int>& nums) {
-    vector<int>arr1;
-    vector<int>arr2;
-     
-    int n  = nums.size(); 
-
-   
-
-    if(n==1) return nums[0];
-    
-    for(int i=0; i<n; i++){
-        
-        if(i!=0) arr1.push_back(nums[i]);
-        if(i!=n-1) arr2.push_back(nums[i]);
-
-
-    }
-
-     return max(rob1(arr1),rob1(arr2));
-
-    }
-
-
 };
