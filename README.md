@@ -1,97 +1,41 @@
 # Problem of the Day  2/03/2024
-### My [Solution](https://github.com/theprince29/leetcodeSolution/blob/main/0977-squares-of-a-sorted-array/0977-squares-of-a-sorted-array.cpp)
+### My Solution
 
-<h2><a href="https://leetcode.com/problems/squares-of-a-sorted-array/">977. Squares of a Sorted Array</a></h2><h3>Easy</h3><hr><div><p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing</strong> order, return <em>an array of <strong>the squares of each number</strong> sorted in non-decreasing order</em>.</p>
+<h2><a href="https://leetcode.com/problems/sort-array-by-increasing-frequency">1741. Sort Array by Increasing Frequency</a></h2><h3>Easy</h3><hr><p>Given an array of integers <code>nums</code>, sort the array in <strong>increasing</strong> order based on the frequency of the values. If multiple values have the same frequency, sort them in <strong>decreasing</strong> order.</p>
+
+<p>Return the <em>sorted array</em>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [-4,-1,0,3,10]
-<strong>Output:</strong> [0,1,9,16,100]
-<strong>Explanation:</strong> After squaring, the array becomes [16,1,0,9,100].
-After sorting, it becomes [0,1,9,16,100].
+<pre>
+<strong>Input:</strong> nums = [1,1,2,2,2,3]
+<strong>Output:</strong> [3,1,1,2,2,2]
+<strong>Explanation:</strong> &#39;3&#39; has a frequency of 1, &#39;1&#39; has a frequency of 2, and &#39;2&#39; has a frequency of 3.
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [-7,-3,2,3,11]
-<strong>Output:</strong> [4,9,9,49,121]
+<pre>
+<strong>Input:</strong> nums = [2,3,1,3,2]
+<strong>Output:</strong> [1,3,3,2,2]
+<strong>Explanation:</strong> &#39;2&#39; and &#39;3&#39; both have a frequency of 2, so they are sorted in decreasing order.
 </pre>
+
+<p><strong class="example">Example 3:</strong></p>
+
+<pre>
+<strong>Input:</strong> nums = [-1,1,-6,4,5,-6,1,4,1]
+<strong>Output:</strong> [5,-1,4,4,-6,-6,1,1,1]</pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code><span>1 &lt;= nums.length &lt;= </span>10<sup>4</sup></code></li>
-	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
-	<li><code>nums</code> is sorted in <strong>non-decreasing</strong> order.</li>
+	<li><code>1 &lt;= nums.length &lt;= 100</code></li>
+	<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
-<p>&nbsp;</p>
-<strong>Follow up:</strong> Squaring each element and sorting the new array is very trivial, could you find an <code>O(n)</code> solution using a different approach?</div>
-
-
-```
-class Solution {
-public:
-    int getMax(vector<int>& arr) {
-        int max = arr[0];
-        for (int i = 1; i < arr.size(); i++) {
-            if (arr[i] > max) {
-                max = arr[i];
-            }
-        }
-        return max;
-    }
-
-    void countSort(vector<int>& arr, int exp) {
-        vector<int> output(arr.size());
-        vector<int> count(10, 0);
-
-        for (int i = 0; i < arr.size(); i++) {
-            count[(arr[i] / exp) % 10]++;
-        }
-
-        for (int i = 1; i < 10; i++) {
-            count[i] += count[i - 1];
-        }
-
-        for (int i = arr.size() - 1; i >= 0; i--) {
-            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-            count[(arr[i] / exp) % 10]--;
-        }
-
-        for (int i = 0; i < arr.size(); i++) {
-            arr[i] = output[i];
-        }
-    }
-
-    void radixSort(vector<int>& arr) {
-        int max = getMax(arr);
-
-        for (int exp = 1; max / exp > 0; exp *= 10) {
-            countSort(arr, exp);
-        }
-    }
-
-    vector<int> sortedSquares(vector<int>& nums) {
-        for (int i = 0; i < nums.size(); i++) {
-            nums[i] = nums[i] * nums[i];
-        }
-        radixSort(nums);
-        return nums;
-    }
-};
-```
-
-<!---LeetCode Topics Start-->
-# LeetCode Topics
-## Array
-|  |
-| ------- |
-| [1741-sort-array-by-increasing-frequency](https://github.com/theprince29/leetcodeSolution/tree/master/1741-sort-array-by-increasing-frequency) |
-## Hash Table
-|  |
 | ------- |
 | [1741-sort-array-by-increasing-frequency](https://github.com/theprince29/leetcodeSolution/tree/master/1741-sort-array-by-increasing-frequency) |
 ## Sorting
