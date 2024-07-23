@@ -1,4 +1,4 @@
-# Problem of the Day  2/03/2024
+# Problem of the Day  23/07/2024
 ### My Solution
 
 <h2><a href="https://leetcode.com/problems/sort-array-by-increasing-frequency">1741. Sort Array by Increasing Frequency</a></h2><h3>Easy</h3><hr><p>Given an array of integers <code>nums</code>, sort the array in <strong>increasing</strong> order based on the frequency of the values. If multiple values have the same frequency, sort them in <strong>decreasing</strong> order.</p>
@@ -36,8 +36,7 @@
 	<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
-| ------- |
-| [1741-sort-array-by-increasing-frequency](https://github.com/theprince29/leetcodeSolution/tree/master/1741-sort-array-by-increasing-frequency) |
+
 ## Sorting
 |  |
 | ------- |
