@@ -22,9 +22,13 @@ public:
         int n = coins.size();
         vector<vector<int>>dp(n,vector<int>(amount+1,0));
 
+        vector<int>prev(amount+1,0);
+        vector<int>curr(amount+1,0);
+
+
         for(int t = 0; t<=amount;t++)
         {
-             dp[0][t] = t%coins[0] == 0 ;
+             prev[t] = t%coins[0] == 0 ;
             
         }
 
@@ -32,13 +36,14 @@ public:
         {
             for(int tar = 0 ; tar <=amount ; tar++)
             {
-                long nottake = dp[ind-1][tar];
+                long nottake = prev[tar];
                 long take = 0 ;
-                if(coins[ind]<=tar) take  = dp[ind][ tar - coins[ind]];
-                dp[ind][tar] =  take + nottake;
+                if(coins[ind]<=tar) take  = curr[ tar - coins[ind]];
+                curr[tar] =  take + nottake;
             }
+            prev = curr;
         }
 
-        return dp[n-1][amount];
+        return prev[amount];
     }
 };
