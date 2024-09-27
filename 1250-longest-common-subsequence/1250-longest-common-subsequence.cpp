@@ -1,25 +1,23 @@
 class Solution {
-public:
-    int longestCommonSubsequence(string text1, string text2) {
-            int m = text1.length();
-    int n = text2.length();
 
-    // Create a 2D vector to store the lengths of common subsequences
-    std::vector<std::vector<int>> dp(m + 1, std::vector<int>(n + 1, 0));
+private:
+    int fun(int i , int j ,string &text1 ,string &text2,vector<vector<int>>&dp)
+    {
+        if(i < 0 || j <0) return 0 ; 
+        if(text1[i] == text2[j]) return dp[i][j] =  1+ fun(i-1,j-1,text1,text2,dp);
 
-    // Build the dp array
-    for (int i = 1; i <= m; ++i) {
-        for (int j = 1; j <= n; ++j) {
-            if (text1[i - 1] == text2[j - 1]) {
-                dp[i][j] = dp[i - 1][j - 1] + 1;
-            } else {
-                dp[i][j] = std::max(dp[i - 1][j], dp[i][j - 1]);
-            }
-        }
+        if(dp[i][j]!=-1) return dp[i][j];
+
+        return dp[i][j] =  max(fun(i-1,j,text1,text2,dp),fun(i,j-1,text1,text2,dp));
+           
     }
 
-    // The length of the longest common subsequence is stored in dp[m][n]
-    return dp[m][n];
 
+public:
+    int longestCommonSubsequence(string text1, string text2) {
+        int n1 = text1.length();
+        int n2 = text2.length();
+        vector<vector<int>>dp(n1+1,vector<int>(n2+1,-1));
+        return fun(n1-1,n2-1,text1,text2,dp);
     }
 };
