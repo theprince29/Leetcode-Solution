@@ -1,16 +1,52 @@
 class Solution {
 public:
-    vector<int> targetIndices(vector<int>& nums, int target) {
-        vector<int>v= nums;
-        sort(v.begin(),v.end());
-        vector<int>ans;
-        for(int i =0 ; i <nums.size();i++)
-        {
-            if(v[i]==target)
-            {
-                ans.push_back(i);
-            }
+    
+int findLeft(const vector<int>& nums, int target) {
+    int left = 0, right = nums.size();
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid;
         }
-        return ans;
     }
+    return left;
+}
+
+
+int findRight(const vector<int>& nums, int target) {
+    int left = 0, right = nums.size();
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] <= target) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    return left;
+}
+
+vector<int> targetIndices(vector<int>& nums, int target) {
+    
+    sort(nums.begin(), nums.end());
+
+    
+    int leftIdx = findLeft(nums, target);
+    int rightIdx = findRight(nums, target);
+
+    
+    if (leftIdx == rightIdx) {
+        return {};
+    }
+
+    
+    vector<int> result;
+    for (int i = leftIdx; i < rightIdx; ++i) {
+        result.push_back(i);
+    }
+
+    return result;
+}
 };
