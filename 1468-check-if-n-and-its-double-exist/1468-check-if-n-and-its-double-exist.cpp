@@ -26,9 +26,7 @@ public:
             return true;
         }
         
-        if (arr[i] % 2 == 0 && binarySearch(arr, arr[i] / 2, i)) {
-            return true;
-        }
+     
     }
     return false;
     }
